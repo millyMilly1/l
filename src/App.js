@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React, { useEffect, useState } from 'react';
+import MovieCard from './MovieCard';
+import { fetchData } from './api';
+
+import MovieDetails from './MovieDetails';
+
+const App = () => {
+  const [topMovies, setTopMovies] = useState([]);
+
+  useEffect(() => {
+    // Fetch top 10 movies from TMDB API
+    async function fetchTopMovies() {
+      try {
+        const response = await fetch(
+          'https://api.themoviedb.org/3/movie/popular?api_key=73e936ed956d1752c829a51b2cad2d32'
+        );
+        const data = await response.json();
+        setTopMovies(data.results.slice(0, 10));
+      } catch (error) {
+        console.error('Error fetching top movies:', error);
+      }
+    }
+
+    fetchTopMovies();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Top 10 Movies</h1>
+      <div className="bg-red">
+        {topMovies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
