@@ -5,3 +5,14 @@
 
 /* Your custom styles */
 
+.movie-grid{
+ border: 5px solid red;
+ display: flex;
+}
+
+.movies{
+    border: 1px dotted greenyellow;
+    display: flexbox;
+    padding-right: 8px;
+}
+ 

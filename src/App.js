@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import { fetchData } from './api';
-
+import 'tailwindcss/tailwind.css'; 
 import MovieDetails from './MovieDetails';
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
   return (
     <div>
       <h1>Top 10 Movies</h1>
-      <div className="bg-red">
+      <div className="movie-grid">
         {topMovies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
