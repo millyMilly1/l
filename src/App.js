@@ -1,9 +1,9 @@
 
 import React, { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
-import { fetchData } from './api';
+//import { fetchData } from './api';
 import 'tailwindcss/tailwind.css'; 
-import MovieDetails from './MovieDetails';
+//import MovieDetails from './MovieDetails';
 
 const App = () => {
   const [topMovies, setTopMovies] = useState([]);
